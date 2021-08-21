@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["src/background.ts", "src/content.ts"],
+  "module": "es6",
+  "lib": ["dom", "es6"]
+}

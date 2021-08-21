@@ -1,2 +1,3 @@
-# robora-server
-Robora socket server
+# Robora Server
+
+Robora Server: Socker server for the Robora Chrome Extension
