@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const PORT = process.env.PORT || 8080;
-const INDEX = "/index.html";
+const PORT = process.env.PORT || 3000;
+const INDEX = "index.html";
 /*
  * Web server
  */
@@ -17,6 +17,7 @@ const server = app.listen(PORT, () => console.log(`Listening on ${PORT}`));
  * Socket server
  */
 const io = require("socket.io")(server, {
+    allowEIO3: true,
     cors: {
         origins: "*",
         methods: ["GET"],
@@ -24,5 +25,11 @@ const io = require("socket.io")(server, {
     },
 });
 io.on("connection", (client) => {
-    console.log(`Client is connected ${JSON.stringify(client)}`);
+    console.log(`Client is connected!`);
+    console.log(client.id);
+    // client.join("test");
+    client.on("_ping", (data) => {
+        console.log(`Ping client`);
+        client.emit("OK");
+    });
 });
