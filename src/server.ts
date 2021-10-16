@@ -21,7 +21,6 @@ const io = require("socket.io")(server, {
   cors: {
     origins: "*",
     methods: ["GET"],
-    credentials: true,
   },
 });
 
